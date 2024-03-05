@@ -3,6 +3,10 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 #define INST_MEM_SIZE 1024
 #define INST_MEM_START 0x0000
@@ -30,6 +34,7 @@ typedef struct {
     uint8_t data[HEAP_SIZE];
     bool is_free;
     bool is_head;
+    int tailing_bank_size;
 } HeapBank;
 
 typedef struct {
@@ -38,7 +43,6 @@ typedef struct {
     uint8_t data_mem[DATA_MEM_SIZE];
     uint32_t reg[NUM_REGISTERS];
     HeapBank heap_banks[NUM_HEAP_BANK];
-    int first_free_heap;
 } VM;
 
 #endif

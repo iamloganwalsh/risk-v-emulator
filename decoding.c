@@ -1,38 +1,5 @@
 #include "instructions.c"
 
-int get_opcode(uint32_t instruction, VM *vm) {
-    uint8_t opcode = instruction & 0x7F;
-
-    switch (opcode) {
-        case 0b0110011:
-            type_r(instruction, opcode, vm);
-            break;
-        case 0b0010011:
-            type_i(instruction, opcode, vm);
-            break;
-        case 0b0000011:
-            type_i(instruction, opcode, vm);
-            break;
-        case 0b1100111:
-            type_i(instruction, opcode, vm);
-            break;
-        case 0b0110111:
-            type_u(instruction, opcode, vm);
-            break;
-        case 0b0100011:
-            type_s(instruction, opcode, vm);
-            break;
-        case 0b1100011:
-            type_sb(instruction, opcode, vm);
-            break;
-        case 0b1101111:
-            type_uj(instruction, opcode, vm);
-            break;
-        default:
-            exit(1);
-    }
-    return 0;
-}
 
 int type_r(uint32_t instruction, uint8_t opcode, VM * vm) {
     // rd
@@ -292,4 +259,38 @@ int type_uj(uint32_t instruction, uint8_t opcode, VM * vm) {
 
     return 0;
 
+}
+
+int get_opcode(uint32_t instruction, VM *vm) {
+    uint8_t opcode = instruction & 0x7F;
+
+    switch (opcode) {
+        case 0b0110011:
+            type_r(instruction, opcode, vm);
+            break;
+        case 0b0010011:
+            type_i(instruction, opcode, vm);
+            break;
+        case 0b0000011:
+            type_i(instruction, opcode, vm);
+            break;
+        case 0b1100111:
+            type_i(instruction, opcode, vm);
+            break;
+        case 0b0110111:
+            type_u(instruction, opcode, vm);
+            break;
+        case 0b0100011:
+            type_s(instruction, opcode, vm);
+            break;
+        case 0b1100011:
+            type_sb(instruction, opcode, vm);
+            break;
+        case 0b1101111:
+            type_uj(instruction, opcode, vm);
+            break;
+        default:
+            exit(1);
+    }
+    return 0;
 }

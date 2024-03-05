@@ -4,9 +4,17 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include <math.h>
 #include "vm.h"
 #include "register_dump.h"
 
-int check_virtual_routine(uint32_t instruction, uint32_t *address, uint32_t *value, VM *vm);
+char ascii_char;
+int32_t input;
+uint32_t tempval;
+int memory_size;
+uint32_t freeAddress;
+
+
+int check_virtual_routines(uint32_t instruction, uint32_t *address, uint32_t *value, VM *vm);
 
 #endif
